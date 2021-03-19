@@ -4,6 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const url = require('url');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
+const { GenerateSW } = require('workbox-webpack-plugin');
 const publicPath = '';
 
 module.exports = (options = {}) => ({
@@ -52,14 +53,6 @@ module.exports = (options = {}) => ({
       icons: [
         {
           src: resolve(__dirname, 'icon.jpeg'),
-          sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
-        },
-        {
-          src: resolve(__dirname, 'icon.jpeg'),
-          size: '1024x1024' // you can also use the specifications pattern
-        },
-        {
-          src: resolve(__dirname, 'icon.jpeg'),
           size: '1024x1024',
           purpose: 'maskable'
         }
@@ -68,6 +61,10 @@ module.exports = (options = {}) => ({
         'apple-mobile-web-app-title': 'AppTitle',
         'apple-mobile-web-app-status-bar-style': 'black'
       }
+    }),
+    new GenerateSW({
+      clientsClaim: true,
+      skipWaiting: true
     }),
     new ExtractTextPlugin('static/css/styles.css'),
     new HtmlWebpackPlugin({
