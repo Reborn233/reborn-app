@@ -51,15 +51,15 @@ module.exports = (options = {}) => ({
       crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
       icons: [
         {
-          src: path.resolve('/icon.jpeg'),
+          src: resolve('/icon.jpeg'),
           sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
         },
         {
-          src: path.resolve('/icon.jpeg'),
+          src: resolve('/icon.jpeg'),
           size: '1024x1024' // you can also use the specifications pattern
         },
         {
-          src: path.resolve('/icon.jpeg'),
+          src: resolve('/icon.jpeg'),
           size: '1024x1024',
           purpose: 'maskable'
         }
