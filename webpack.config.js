@@ -53,8 +53,8 @@ module.exports = (options = {}) => ({
       icons: [
         {
           src: resolve(__dirname, 'icon.jpeg'),
-          size: '1024x1024',
-          purpose: 'maskable'
+          size: '512x512',
+          "type": "image/jpeg"
         }
       ],
       ios: {
