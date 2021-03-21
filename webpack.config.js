@@ -58,8 +58,8 @@ module.exports = (options = {}) => ({
         }
       ],
       ios: {
-        'apple-mobile-web-app-title': 'AppTitle',
-        'apple-mobile-web-app-status-bar-style': 'black'
+        'apple-mobile-web-app-title': 'Reborn',
+        'apple-mobile-web-app-status-bar-style': 'default'
       }
     }),
     new GenerateSW({
