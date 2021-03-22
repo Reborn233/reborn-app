@@ -29,6 +29,14 @@ function setPageManager () {
   pageManager.setDefault('home').init();
 }
 
+function hideSplashscreen () {
+  const splashscreen = document.querySelector('#splashscreen');
+  splashscreen.style.opacity = '0';
+  setTimeout(() => {
+    document.body.removeChild(splashscreen);
+  }, 300)
+}
+
 function _init_ () {
   setPageManager();
   window.log = console.log.bind(console);
@@ -36,6 +44,7 @@ function _init_ () {
   window.home = function () {
     this.location.hash = ''
   }
+  hideSplashscreen();
 }
 
-_init_();
+window.onload = _init_;

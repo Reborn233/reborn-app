@@ -1,11 +1,11 @@
-const resolve = require('path').resolve;
+const { resolve, join } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const url = require('url');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const { GenerateSW } = require('workbox-webpack-plugin');
-const publicPath = '';
+const publicPath = './';
 
 module.exports = (options = {}) => ({
   entry: {
@@ -53,14 +53,17 @@ module.exports = (options = {}) => ({
       icons: [
         {
           src: resolve(__dirname, 'src/icon.png'),
-          size: '114x114',
-          type: "image/png"
+          sizes: [96, 128, 192, 256, 384, 512],
+          type: "image/png",
+          destination: join('icons', 'ios'),
+          ios: true
         }
       ],
       ios: {
         'apple-mobile-web-app-title': 'Reborn',
         'apple-mobile-web-app-status-bar-style': 'default'
-      }
+      },
+      inject: true
     }),
     new GenerateSW({
       clientsClaim: true,
@@ -69,7 +72,7 @@ module.exports = (options = {}) => ({
     new ExtractTextPlugin('static/css/styles.css'),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
-      // favicon: resolve(__dirname, 'src/favicon.ico')
+      favicon: resolve(__dirname, 'src/favicon.ico')
     })
   ],
   optimization: {
