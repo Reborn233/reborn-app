@@ -1,5 +1,5 @@
 import tpl from './view.html';
-import { on } from '@/libs/utils';
+import './style.less';
 const func = {
   name: 'function',
   template: tpl,
