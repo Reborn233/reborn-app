@@ -16,15 +16,15 @@ function createPage (page) {
 
 function setPageManager () {
   const pages = {
-    home: createPage(Home),
-    function: createPage(Function),
-    about: createPage(About),
-    qrcode: createPage(Qrcode)
+    home: Home,
+    function: Function,
+    about: About,
+    qrcode: Qrcode
   }
   pages.home.url = '#';
 
   for (let page in pages) {
-    pageManager.push(pages[page]);
+    pageManager.push(createPage(pages[page]));
   }
   pageManager.setDefault('home').init();
 }
