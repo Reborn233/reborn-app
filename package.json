@@ -9,6 +9,7 @@
     "build": "rimraf dist && webpack -p --progress --hide-modules --mode production"
   },
   "dependencies": {
+    "clipboard": "^2.0.8",
     "qrcodejs2": "^0.0.2"
   },
   "engines": {

@@ -1,0 +1,36 @@
+<div class="imageToBase64 page">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#function">功能</a></li>
+      <li class="breadcrumb-item active" aria-current="page">图片转base64</li>
+    </ol>
+  </nav>
+  <div class="row justify-content-start">
+    <!-- <div class="d-grid gap-2 col-3 mb-3">
+      <button id="toQrcodeBtn" type="button" class="btn btn-pink">
+        换Base64
+      </button>
+    </div> -->
+    <div class="col-12 mb-3">
+      <input
+        class="form-control"
+        type="file"
+        id="file"
+        accept="image/jpeg,image/jpg,image/png,image/svg"
+      />
+    </div>
+    <div class="col-12">
+      <textarea
+        class="form-control"
+        placeholder="输出base64"
+        id="base64"
+        rows="12"
+      ></textarea>
+      <div class="text-end">
+        <button class="btn btn-default mt-3" data-clipboard-target="#base64">
+          copy
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

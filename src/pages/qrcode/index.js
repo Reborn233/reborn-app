@@ -1,16 +1,16 @@
 import './style.less';
 import tpl from './view.html';
 import { on } from '@/libs/utils';
-import alert from '@/libs/alert';
-import QRCode from 'qrcodejs2'
-const qrcode = {
+import QRCode from 'qrcodejs2';
+
+export default {
   name: 'qrcode',
   template: tpl,
   init () {
-    qrcode.bindEvent();
+    this.bindEvent();
   },
   bindEvent () {
-    on('#toQrcodeBtn', 'click', qrcode.toQrcode)
+    on('#toQrcodeBtn', 'click', this.toQrcode)
 
   },
   toQrcode (ev) {
@@ -29,8 +29,7 @@ const qrcode = {
       });
     }
     else {
-      alert('请输入内容!');
+      Alert('请输入内容!');
     }
   }
 }
-export default qrcode

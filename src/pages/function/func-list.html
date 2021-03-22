@@ -1,0 +1,18 @@
+<% for(let i = 0; i < data.length; i++){ %>
+<div class="col-xs-12 col-sm-6 col-md-4 mb-3">
+  <div class="card" data-url="qrcode">
+    <div class="card-body">
+      <a href="<%= data[i].url%>" class="text-decoration-none">
+        <h5 class="card-title d-flex align-items-center">
+          <img
+            src="<%= data[i].icon%>"
+            alt="二维码"
+            width="36"
+            class="me-2"
+          /><%= data[i].name%>
+        </h5>
+      </a>
+    </div>
+  </div>
+</div>
+<% } %>

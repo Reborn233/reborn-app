@@ -1,6 +1,6 @@
 import tpl from './view.html';
-const about = {
+
+export default {
   name: 'about',
   template: tpl
 }
-export default about

@@ -1,22 +1,30 @@
-import tpl from './view.html';
 import './style.less';
-const func = {
+import tpl from './view.html';
+import funcList from './func-list.html';
+import { template } from '@/libs/utils';
+
+export default {
   name: 'function',
   template: tpl,
-  init () {
-    func.bindEvent();
+  data: {
+    lists: [
+      {
+        name: '转二维码',
+        url: '#qrcode',
+        icon: require('@/assets/images/qrcode.png')
+      },
+      {
+        name: '图片转base64',
+        url: '#imageToBase64',
+        icon: require('@/assets/images/imageToBase64.png')
+      }
+    ]
   },
-  bindEvent () {
-    // on('#menus', 'click', (ev) => {
-    //   const target = event.target;
-    //   const clickEl = target.closest('.card');
-    //   if (clickEl) {
-    //     const url = clickEl.dataset.url;
-    //     log(url)
-    //     return;
-    //   }
-    // })
+  init () {
+    this.renderList();
+  },
+  renderList () {
+    const $list = template(funcList, { data: this.data.lists });
+    document.querySelector('#function').innerHTML = $list;
   }
 }
-
-export default func

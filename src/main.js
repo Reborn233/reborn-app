@@ -1,37 +1,35 @@
 import './style.less';
 import pageManager from './libs/page-manager';
+import Alert from './libs/alert';
 import Home from './pages/home';
 import About from './pages/about';
-import Function from './pages/function';
+import Func from './pages/function';
 import Qrcode from './pages/qrcode';
-function createPage (page) {
-  return {
-    name: page.name,
-    url: '#' + page.name,
-    template: page.template,
-    init: page.init,
-    destory: page.destory
-  }
-}
+import ImageToBase64 from './pages/imageToBase64';
 
 function setPageManager () {
   const pages = {
     home: Home,
-    function: Function,
+    function: Func,
     about: About,
-    qrcode: Qrcode
+    qrcode: Qrcode,
+    imageToBase64: ImageToBase64
   }
   pages.home.url = '#';
 
   for (let page in pages) {
-    pageManager.push(createPage(pages[page]));
+    pages[page].url = `#${pages[page].name}`
+    pageManager.push(pages[page]);
   }
   pageManager.setDefault('home').init();
 }
 
 function hideSplashscreen () {
-  if (window.innerWidth >= 576) return;
   const splashscreen = document.querySelector('#splashscreen');
+  if (window.innerWidth >= 576) {
+    document.body.removeChild(splashscreen);
+    return;
+  }
   console.log(splashscreen)
   splashscreen.querySelector('.button').addEventListener('click', () => {
     splashscreen.style.opacity = '0';
@@ -45,6 +43,7 @@ function _init_ () {
   setPageManager();
   window.log = console.log.bind(console);
   window.pageManager = pageManager;
+  window.Alert = Alert;
   window.home = function () {
     this.location.hash = ''
   }

@@ -71,9 +71,9 @@ const pageManager = {
       dom: html
     });
 
-    if (!config.isBind) {
-      this._bind(config);
-    }
+    // if (!config.isBind) {
+    //   this._bind(config);
+    // }
     if (config.init) {
       const params = getUrlParams();
       config.init(params);
@@ -96,9 +96,9 @@ const pageManager = {
     if (!found) {
       const html = config.template;
       this.render(html)
-      if (!config.isBind) {
-        this._bind(config);
-      }
+      // if (!config.isBind) {
+      //   this._bind(config);
+      // }
       if (config.init) {
         const params = getUrlParams();
         config.init(params);
@@ -139,15 +139,15 @@ const pageManager = {
     }
     return page;
   },
-  _bind: function (page) {
-    let events = page.events || {};
-    for (let t in events) {
-      for (let type in events[t]) {
-        this.$container.querySelector(t).addEventListener(type, events[t][type]);
-      }
-    }
-    page.isBind = true;
-  },
+  // _bind: function (page) {
+  //   let events = page.events || {};
+  //   for (let t in events) {
+  //     for (let type in events[t]) {
+  //       this.$container.querySelector(t).addEventListener(type, events[t][type]);
+  //     }
+  //   }
+  //   page.isBind = true;
+  // },
   render: function (html) {
     this.$container.innerHTML = html;
   },
