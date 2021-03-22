@@ -1,7 +1,34 @@
+@import './assets/styles/mixins.less';
 * {
   margin: 0;
   padding: 0;
 }
+a {
+  color: @pink;
+}
 .page {
   margin-top: 15px;
+}
+.btn {
+  color: #fff;
+  background-color: @pink;
+  border-color: @pink;
+}
+
+// nav
+.nav-item {
+  line-height: 44px;
+}
+.navbar-light .navbar-nav .nav-link.active {
+  color: @pink;
+  font-size: 1.2rem;
+}
+
+// breadcrumb
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+}
+.breadcrumb-item.active {
+  font-size: 0.9rem;
 }
