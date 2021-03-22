@@ -52,9 +52,9 @@ module.exports = (options = {}) => ({
       crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
       icons: [
         {
-          src: resolve(__dirname, 'icon.jpeg'),
-          size: '512x512',
-          "type": "image/jpeg"
+          src: resolve(__dirname, 'src/icon.png'),
+          size: '114x114',
+          type: "image/png"
         }
       ],
       ios: {
@@ -69,7 +69,7 @@ module.exports = (options = {}) => ({
     new ExtractTextPlugin('static/css/styles.css'),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
-      favicon: resolve(__dirname, 'src/favicon.ico')
+      // favicon: resolve(__dirname, 'src/favicon.ico')
     })
   ],
   optimization: {
