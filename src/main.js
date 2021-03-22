@@ -30,11 +30,15 @@ function setPageManager () {
 }
 
 function hideSplashscreen () {
+  if (window.innerWidth >= 576) return;
   const splashscreen = document.querySelector('#splashscreen');
-  splashscreen.style.opacity = '0';
-  setTimeout(() => {
-    document.body.removeChild(splashscreen);
-  }, 300)
+  console.log(splashscreen)
+  splashscreen.querySelector('.button').addEventListener('click', () => {
+    splashscreen.style.opacity = '0';
+    setTimeout(() => {
+      document.body.removeChild(splashscreen);
+    }, 300)
+  })
 }
 
 function _init_ () {
