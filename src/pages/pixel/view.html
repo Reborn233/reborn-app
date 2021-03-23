@@ -1,0 +1,37 @@
+<div class="pixel page">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#function">功能</a></li>
+      <li class="breadcrumb-item active" aria-current="page">图片像素化</li>
+    </ol>
+  </nav>
+  <div class="row justify-content-start">
+    <div class="col-12 mb-3">
+      <div style="max-width: 500px">
+        <input
+          class="form-control mb-3"
+          type="file"
+          id="file"
+          accept="image/jpeg,image/jpg,image/png,image/svg"
+        />
+        <label for="pixelSize" class="form-label mb-0">像素大小(5-30)：</label>
+        <span id="pixelSize">15</span>
+        <input
+          type="range"
+          class="form-range"
+          max="100"
+          min="5"
+          step="5"
+          value="15"
+          id="pixelSizeRange"
+        />
+        <button id="pixelBtn" type="button" class="btn btn-default">
+          像素化
+        </button>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-6">
+      <img id="pixelImage" style="width: 100%" />
+    </div>
+  </div>
+</div>

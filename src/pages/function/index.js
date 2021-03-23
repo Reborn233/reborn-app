@@ -17,6 +17,11 @@ export default {
         name: '图片转base64',
         url: '#imageToBase64',
         icon: require('@/assets/images/imageToBase64.png')
+      },
+      {
+        name: '像素化图片',
+        url: '#pixel',
+        icon: require('@/assets/images/pixel.png')
       }
     ]
   },

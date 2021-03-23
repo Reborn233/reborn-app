@@ -13,6 +13,7 @@ export default {
     on('#file', 'change', this.selectFile.bind(this));
     clipboard = new ClipboardJS('.btn');
     clipboard.on('success', () => {
+      document.querySelector('#base64').blur();
       Alert('已拷贝到剪切板')
     });
   },

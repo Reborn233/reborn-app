@@ -36,14 +36,15 @@
       #splashscreen > .button {
         width: 130px;
         height: 40px;
-        /* 3f3949 */
         border: 2px solid #3f3949;
         padding: 5px 0;
         border-radius: 8px;
         color: #3f3949;
-        text-align: center;
         margin-bottom: 80px;
         position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
       #splashscreen > .button::after {
         content: '';
@@ -134,46 +135,38 @@
       </div>
       <div class="button">立即进入</div>
     </div>
-    <header>
-      <nav class="navbar navbar-expand-sm navbar-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            <img
-              src="./assets/images/image.png"
-              alt="Reborn的工具库"
-              width="35"
-              height="35"
-            />
-          </a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul id="navbar" class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="#home">首页</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#function">功能</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#about">关于</a>
-              </li>
-            </ul>
-          </div>
+    <nav class="navbar navbar-light bg-white">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img
+            src="./assets/images/image.png"
+            alt="Reborn的工具库"
+            width="35"
+            height="35"
+          />
+        </a>
+        <div class="app-nav">
+          <ul id="navbar" class="nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#home">首页</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#function">功能</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">关于</a>
+            </li>
+          </ul>
         </div>
-      </nav>
-    </header>
+        <div id="burger" class="burger d-block d-sm-none">
+          <div class="line-1"></div>
+          <div class="line-2"></div>
+          <div class="line-3"></div>
+        </div>
+      </div>
+    </nav>
     <!--  -->
-    <div id="alert-wrapper" class="container pt-3"></div>
+    <div id="alert-wrapper" class="container"></div>
     <main id="container" class="container"></main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>

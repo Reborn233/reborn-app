@@ -21,9 +21,8 @@ const pageManager = {
       const url = location.hash.indexOf('#') === 0 ? location.hash : '#';
       const page = self._find('url', url) || self._defaultPage;
       const prevPage = self._pageStack[self._pageStack.length - 1];
-
       if (prevPage) {
-        prevPage.config.destory && prevPage.config.destory();
+        prevPage.config.destroy && prevPage.config.destroy();
       }
 
       if (state._pageIndex <= self._pageIndex || self._findInStack(url)) {

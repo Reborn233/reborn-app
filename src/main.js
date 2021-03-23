@@ -6,6 +6,7 @@ import About from './pages/about';
 import Func from './pages/function';
 import Qrcode from './pages/qrcode';
 import ImageToBase64 from './pages/imageToBase64';
+import Pixel from './pages/pixel';
 
 function setPageManager () {
   const pages = {
@@ -13,7 +14,8 @@ function setPageManager () {
     function: Func,
     about: About,
     qrcode: Qrcode,
-    imageToBase64: ImageToBase64
+    imageToBase64: ImageToBase64,
+    pixel: Pixel
   }
   pages.home.url = '#';
 
@@ -30,7 +32,6 @@ function hideSplashscreen () {
     document.body.removeChild(splashscreen);
     return;
   }
-  console.log(splashscreen)
   splashscreen.querySelector('.button').addEventListener('click', () => {
     splashscreen.style.opacity = '0';
     setTimeout(() => {
@@ -39,7 +40,22 @@ function hideSplashscreen () {
   })
 }
 
+function initBurger () {
+  const $burger = document.querySelector('#burger');
+  const $appNav = document.querySelector('.app-nav');
+  $burger.addEventListener('click', () => {
+    $burger.classList.toggle('active');
+    if ($burger.classList.contains('active')) {
+      $appNav.style.transform = 'translateX(0)';
+    }
+    else {
+      $appNav.style.transform = 'translateX(100%)';
+    }
+  })
+}
+
 function _init_ () {
+  initBurger();
   setPageManager();
   window.log = console.log.bind(console);
   window.pageManager = pageManager;
