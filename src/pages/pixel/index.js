@@ -27,7 +27,8 @@ export default {
   toPixel () {
     if (this.img) {
       const size = document.querySelector('#pixelSizeRange').value;
-      document.querySelector('#pixelImage').src = this.pixelate(this.img, Number(size))
+      document.querySelector('#pixelImage').src = this.pixelate(this.img, Number(size));
+      Alert('图片处理成功', 'success');
     }
   },
   pixelate (img, size) {
