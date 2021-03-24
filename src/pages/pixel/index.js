@@ -8,13 +8,16 @@ export default {
     this.bindEvent();
   },
   img: null,
+  imageName: '',
   bindEvent () {
     on('#file', 'change', this.selectFile.bind(this));
     on('#pixelSizeRange', 'change', this.pixelSizeRange.bind(this))
     on('#pixelBtn', 'click', this.toPixel.bind(this));
+    on('#saveBtn', 'click', this.save.bind(this));
   },
   selectFile (event) {
     const image = event.target.files[0];
+    this.imageName = image.name;
     const img = new Image();
     img.onload = () => {
       this.img = img;
@@ -66,6 +69,16 @@ export default {
     const value = e.target.value;
     document.querySelector('#pixelSize').innerText = value;
   },
+  save () {
+    if (!this.imageName) return;
+    const img = document.querySelector('#pixelImage');
+    const alink = document.createElement("a");
+    alink.setAttribute('download', this.imageName)
+    alink.href = img.src;
+    alink.click();
+  },
   destroy () {
+    this.img = null;
+    this.imageName = null;
   }
 }
