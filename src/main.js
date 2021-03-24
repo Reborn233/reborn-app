@@ -52,9 +52,25 @@ function initBurger () {
       $appNav.style.transform = 'translateX(100%)';
     }
   })
+  $appNav.addEventListener('click', (e) => {
+    const target = e.target;
+    const link = target.closest('.nav-link');
+    if (link) {
+      $burger.classList.remove('active');
+      $appNav.style.transform = 'translateX(100%)';
+    }
+  })
+}
+
+function updateApp () {
+  const $update = document.querySelector('#update');
+  $update.addEventListener('click', () => {
+    window.location.reload(true);
+  });
 }
 
 function _init_ () {
+  updateApp();
   initBurger();
   setPageManager();
   window.log = console.log.bind(console);
