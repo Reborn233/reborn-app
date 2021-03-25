@@ -60,3 +60,45 @@ export const getUrlParams = (url = window.location.href) => {
     })
   );
 }
+export const NumberFormat = (target, hold = 0, rounding = true) => {
+  if (Number.isNaN(Number(target))) return null;
+  let r = /^\+?[1-9][0-9]*$/;
+  hold = r.test(hold) ? Number(hold) : 0;
+  target = Number(target);
+  let _multiplier = Math.pow(10, hold);
+
+  if (rounding) {
+    return Math.round(target * _multiplier) / _multiplier;
+  }
+  else {
+    return Math.floor(target * _multiplier) / _multiplier;
+  }
+}
+
+export const multiply = (a, b = 1) => {
+  return NumberFormat(a * b)
+}
+
+export const multiplyToArray = (a, b = []) => {
+  let res = [];
+  if (Array.isArray(b)) {
+    b.forEach(item => {
+      res.push(NumberFormat(item * a))
+    });
+    return res;
+  }
+  else {
+    throw new Error('乘数应该为数组')
+  }
+}
+
+export const sumToArray = (...args) => {
+  let res = [];
+  args.forEach(a => {
+    a.forEach((b, j) => {
+      res[j] = res[j] || 0;
+      res[j] += b
+    })
+  })
+  return res;
+}

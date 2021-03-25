@@ -6,11 +6,6 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, viewport-fit=cover"
     />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <title>Reborn</title>
     <style>
       #splashscreen {
         position: fixed;
@@ -20,7 +15,7 @@
         right: 0;
         background-color: #f0f9fe;
         transition: all 0.2s;
-        z-index: 9;
+        z-index: 8999;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -65,6 +60,15 @@
         left: 10px;
       }
     </style>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <title>Reborn</title>
   </head>
   <body>
     <div id="splashscreen" class="d-sm-none">
@@ -145,18 +149,21 @@
             height="35"
           />
         </a>
-        <div class="app-nav">
-          <ul id="navbar" class="nav me-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#home">首页</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#function">功能</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#about">关于</a>
-            </li>
-          </ul>
+        <div>
+          <div class="app-nav">
+            <ul id="navbar" class="nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#home">首页</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#function">功能</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#about">关于</a>
+              </li>
+            </ul>
+          </div>
+          <div class="app-modal-backdrop fade"></div>
         </div>
         <div id="burger" class="burger d-block d-sm-none">
           <div class="line-1"></div>

@@ -33,14 +33,26 @@ img {
 }
 
 // nav
-
+.app-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  background-color: #000;
+  &.fade {
+    opacity: 0;
+  }
+}
 @media screen and (max-width: 576px) {
   .app-nav {
     position: fixed;
     width: 36%;
     max-width: 275px;
     height: 100vh;
-    z-index: 5;
+    z-index: 1050;
     top: 0;
     right: 0;
     padding-top: 65px;
@@ -51,6 +63,15 @@ img {
     .nav {
       flex-direction: column;
       text-align: center;
+    }
+    &.active {
+      transform: translateX(0);
+      + .app-modal-backdrop {
+        display: block;
+        &.fade {
+          opacity: 0.5;
+        }
+      }
     }
   }
 }
@@ -78,7 +99,7 @@ img {
   position: relative;
   width: 25px;
   height: 25px;
-  z-index: 7;
+  z-index: 1060;
   > div {
     width: 100%;
     height: 4px;

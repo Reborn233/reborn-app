@@ -22,6 +22,11 @@ export default {
         name: '像素化图片',
         url: '#pixel',
         icon: require('@/assets/images/pixel.png')
+      },
+      {
+        name: '减肥热量计算器(傻瓜版)',
+        url: '#kcal',
+        icon: require('@/assets/images/pixel.png')
       }
     ]
   },

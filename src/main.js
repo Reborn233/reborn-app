@@ -7,6 +7,7 @@ import Func from './pages/function';
 import Qrcode from './pages/qrcode';
 import ImageToBase64 from './pages/imageToBase64';
 import Pixel from './pages/pixel';
+import Kcal from './pages/kcal';
 
 function setPageManager () {
   const pages = {
@@ -15,7 +16,8 @@ function setPageManager () {
     about: About,
     qrcode: Qrcode,
     imageToBase64: ImageToBase64,
-    pixel: Pixel
+    pixel: Pixel,
+    kcal: Kcal
   }
   pages.home.url = '#';
 
@@ -43,22 +45,22 @@ function hideSplashscreen () {
 function initBurger () {
   const $burger = document.querySelector('#burger');
   const $appNav = document.querySelector('.app-nav');
+  const $model = document.querySelector('.app-nav + .app-modal-backdrop');
   $burger.addEventListener('click', () => {
     $burger.classList.toggle('active');
-    if ($burger.classList.contains('active')) {
-      $appNav.style.transform = 'translateX(0)';
-    }
-    else {
-      $appNav.style.transform = 'translateX(100%)';
-    }
+    $appNav.classList.toggle('active');
   })
   $appNav.addEventListener('click', (e) => {
     const target = e.target;
     const link = target.closest('.nav-link');
     if (link) {
       $burger.classList.remove('active');
-      $appNav.style.transform = 'translateX(100%)';
+      $appNav.classList.remove('active');
     }
+  });
+  $model.addEventListener('click', (e) => {
+    $burger.classList.remove('active');
+    $appNav.classList.remove('active');
   })
 }
 
@@ -66,6 +68,13 @@ function updateApp () {
   const $update = document.querySelector('#update');
   $update.addEventListener('click', () => {
     window.location.reload(true);
+  });
+}
+
+function initBoot () {
+  const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
   });
 }
 
@@ -79,7 +88,9 @@ function _init_ () {
   window.home = function () {
     this.location.hash = ''
   }
+  initBoot();
   hideSplashscreen();
+
 }
 
 window.onload = _init_;

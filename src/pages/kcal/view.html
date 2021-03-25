@@ -1,0 +1,67 @@
+<div class="kcal page">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#function">功能</a></li>
+      <li class="breadcrumb-item active" aria-current="page">
+        减肥热量计算器(傻瓜版)
+      </li>
+    </ol>
+  </nav>
+  <div class="row justify-content-start">
+    <div class="col-xs-12 mb-3">
+      <div class="input-group mb-3">
+        <span class="input-group-text">体重(kg)</span>
+        <input
+          id="kg-input"
+          type="number"
+          class="form-control"
+          placeholder="请输入体重(kg)"
+          aria-describedby="请输入体重(kg)"
+        />
+      </div>
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" checked id="check" />
+        <label class="form-check-label me-1" for="check">运动人群</label>
+        <i
+          class="fa fa-info-circle"
+          data-bs-toggle="tooltip"
+          data-bs-placement="right"
+          style="color: #6c757d"
+          title="每周运动3次及以上人群"
+        ></i>
+      </div>
+      <button id="kcalBtn" type="button" class="btn btn-default me-2">
+        计算
+      </button>
+    </div>
+    <div class="col-xs-12">
+      <ul id="kcal-list" class="list-group">
+        <li class="list-group-item d-flex justify-content-between">
+          <div class="list-label">&nbsp;</div>
+          <span class="d-block flex-fill">方案一</span>
+          <span class="d-block flex-fill">方案二</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between protein">
+          <div class="list-label">蛋白质:</div>
+          <span class="d-block flex-fill"></span>
+          <span class="d-block flex-fill"></span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between fat">
+          <div class="list-label">脂肪:</div>
+          <span class="d-block flex-fill"></span>
+          <span class="d-block flex-fill"></span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between carbohydrate">
+          <div class="list-label">碳水:</div>
+          <span class="d-block flex-fill"></span>
+          <span class="d-block flex-fill"></span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between all">
+          <div class="list-label">总热量:</div>
+          <span class="d-block flex-fill"></span>
+          <span class="d-block flex-fill"></span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
