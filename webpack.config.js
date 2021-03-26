@@ -63,6 +63,7 @@ module.exports = (options = {}) => ({
       ],
       ios: {
         'apple-mobile-web-app-title': 'Reborn',
+        'apple-touch-fullscreen': 'yes',
         'apple-mobile-web-app-capable': 'yes',
         'apple-mobile-web-app-status-bar-style': 'black-translucent'
       },
