@@ -48,7 +48,7 @@ module.exports = (options = {}) => ({
       name: 'My Utils Web App',
       short_name: 'Reborn',
       description: 'Reborn小工具',
-      background_color: '#ffffff',
+      theme_color: '#3f51b5',
       crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
       icons: [
         {
@@ -61,8 +61,9 @@ module.exports = (options = {}) => ({
       ],
       ios: {
         'apple-mobile-web-app-title': 'Reborn',
-        'apple-mobile-web-app-status-bar-style': 'default'
+        'apple-mobile-web-app-status-bar-style': '#3f51b5'
       },
+      orientation: 'landscape-primary',
       inject: true
     }),
     new GenerateSW({
