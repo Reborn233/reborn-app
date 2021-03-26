@@ -21,106 +21,13 @@ img {
 }
 .page {
   margin-top: 15px;
-}
-.btn-default {
-  color: #fff;
-  background-color: @default;
-  border-color: @default;
-}
-.btn-default:hover {
-  color: #fff;
-  opacity: 0.7;
+  padding-bottom: 50px;
 }
 
-// nav
-.app-modal-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1040;
-  width: 100vw;
-  height: 100vh;
-  display: none;
-  background-color: #000;
-  &.fade {
-    opacity: 0;
-  }
-}
-@media screen and (max-width: 576px) {
-  .app-nav {
-    position: fixed;
-    width: 36%;
-    max-width: 275px;
-    height: 100vh;
-    z-index: 1050;
-    top: 0;
-    right: 0;
-    padding-top: 65px;
-    background-color: #fff;
-    transform: translateX(100%);
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 1px 3px rgb(18 18 18 / 10%);
-    .nav {
-      flex-direction: column;
-      text-align: center;
-    }
-    &.active {
-      transform: translateX(0);
-      + .app-modal-backdrop {
-        display: block;
-        &.fade {
-          opacity: 0.5;
-        }
-      }
-    }
-  }
-}
-.nav-item {
-  line-height: 44px;
-}
-.navbar-light .nav .nav-link {
-  color: rgba(0, 0, 0, 0.55);
-}
-.navbar-light .nav .nav-link.active {
-  color: @default;
-  font-size: 1.2rem;
-}
-
-// breadcrumb
-.breadcrumb-item {
+.flex-center {
   display: flex;
-  align-items: center;
+  justify-content: center;
 }
-.breadcrumb-item.active {
-  font-size: 0.9rem;
-}
-
-.burger {
-  position: relative;
-  width: 25px;
-  height: 25px;
-  z-index: 1060;
-  > div {
-    width: 100%;
-    height: 4px;
-    background-color: #333;
-    border-radius: 3px;
-    transition: all 0.3s ease-in;
-  }
-  .line-2,
-  .line-3 {
-    margin-top: 5px;
-  }
-  &.active {
-    .line-1 {
-      transform: rotate(-45deg) translate(-4px, 4.5px);
-    }
-    .line-2 {
-      opacity: 0;
-    }
-    .line-3 {
-      transform: rotate(45deg) translate(-4px, -5.5px);
-      margin-top: 0;
-    }
-  }
+.d-block {
+  display: block;
 }

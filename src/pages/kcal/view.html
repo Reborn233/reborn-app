@@ -1,81 +1,73 @@
 <div class="kcal page">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="#function">功能</a></li>
-      <li class="breadcrumb-item active" aria-current="page">
-        减肥热量计算器(傻瓜版)
-      </li>
-    </ol>
-  </nav>
-  <div class="row justify-content-start">
-    <div class="col-xs-12 mb-3">
-      <div class="input-group mb-3">
-        <span class="input-group-text">体重(kg)</span>
+  <div class="mdui-row">
+    <div class="mdui-col-xs-12 mdui-m-b-3">
+      <div class="mdui-textfield mdui-textfield-floating-label">
+        <label class="mdui-textfield-label">体重(kg)</label>
         <input
           id="kg-input"
+          class="mdui-textfield-input"
+          required
           type="number"
-          class="form-control"
-          placeholder="请输入体重(kg)"
-          aria-describedby="请输入体重(kg)"
         />
+        <div class="mdui-textfield-error">请输入体重(kg)</div>
       </div>
       <div class="form-check mb-3">
-        <input class="form-check-input" type="checkbox" checked id="check" />
-        <label class="form-check-label me-1" for="check">运动人群</label>
+        <label class="mdui-switch">
+          <input id="check" type="checkbox" checked />
+          <i class="mdui-switch-icon"></i>
+        </label>
+        <span class="mdui-m-l-1">运动人群</span>
         <i
-          class="fa fa-info-circle"
-          data-bs-toggle="tooltip"
-          data-bs-placement="right"
-          style="color: #6c757d"
-          title="每周运动3次及以上人群"
-        ></i>
+          class="mdui-icon material-icons"
+          mdui-tooltip="{content: '每周运动3次以上人群',position:'right'}"
+          >info</i
+        >
       </div>
-      <button id="kcalBtn" type="button" class="btn btn-default me-2">
+      <br />
+      <button
+        id="kcalBtn"
+        class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme"
+      >
         计算
       </button>
     </div>
-    <div class="col-xs-12 mb-3">
-      <ul id="kcal-list" class="list-group">
-        <li class="list-group-item d-flex justify-content-between">
+    <div class="mdui-col-xs-12 mdui-m-b-3">
+      <ul id="kcal-list" class="mdui-list">
+        <li class="mdui-list-item mdui-ripple">
           <div class="list-label">&nbsp;</div>
           <span class="d-block flex-fill">方案一</span>
           <span class="d-block flex-fill">方案二</span>
         </li>
-        <li class="list-group-item d-flex justify-content-between protein">
+        <li class="mdui-list-item mdui-ripple protein">
           <div class="list-label">蛋白质:</div>
           <span class="d-block flex-fill"></span>
           <span class="d-block flex-fill"></span>
         </li>
-        <li class="list-group-item d-flex justify-content-between fat">
+        <li class="mdui-list-item mdui-ripple fat">
           <div class="list-label">脂肪:</div>
           <span class="d-block flex-fill"></span>
           <span class="d-block flex-fill"></span>
         </li>
-        <li class="list-group-item d-flex justify-content-between carbohydrate">
+        <li class="mdui-list-item mdui-ripple carbohydrate">
           <div class="list-label">碳水:</div>
           <span class="d-block flex-fill"></span>
           <span class="d-block flex-fill"></span>
         </li>
-        <li class="list-group-item d-flex justify-content-between all">
+        <li class="mdui-list-item mdui-ripple all">
           <div class="list-label">总热量:</div>
           <span class="d-block flex-fill"></span>
           <span class="d-block flex-fill"></span>
         </li>
       </ul>
     </div>
-    <div class="col-xs-12 mb-3">
-      <div class="card">
-        <div class="card-body">
-          <h6 class="card-title">说明： </h6>
-          <p class="card-text">
-            <ol>
-              <li>绿叶不算数据。</li>
-              <li>主食除了黄豆、鹰嘴豆、三色藜麦外，都不算蛋白质和脂肪。 </li>
-              <li>肉类不算碳水</li>
-            </ol>
-          </p>
-        </div>
-      </div>
+    <div class="mdui-col-xs-12 mdui-m-b-3">
+      <h4>说明：</h4>
+      <br />
+      <ol class="mdui-p-l-2">
+        <li>绿叶不算数据。</li>
+        <li>主食除了黄豆、鹰嘴豆、三色藜麦外，都不算蛋白质和脂肪。</li>
+        <li>肉类不算碳水</li>
+      </ol>
     </div>
   </div>
 </div>

@@ -7,17 +7,18 @@ export default {
   name: 'qrcode',
   template: tpl,
   init () {
+    mdui.mutation();
     this.bindEvent();
   },
   bindEvent () {
-    on('#toQrcodeBtn', 'click', this.toQrcode)
+    on('#toQrcodeBtn', 'click', this.toQrcode.bind(this))
 
   },
   toQrcode (ev) {
     const $text = document.querySelector('#textarea');
     const $qrcode = document.querySelector('#qrcode');
     const value = $text.value;
-    if (value) {
+    if (this.valid(value)) {
       $qrcode.innerHTML = '';
       const qrcode = new QRCode("qrcode", {
         text: value,
@@ -28,8 +29,16 @@ export default {
         correctLevel: QRCode.CorrectLevel.H
       });
     }
+  },
+  valid (value) {
+    const $text = document.querySelector('#textarea');
+    if (value) {
+      $text.parentNode.classList.remove('mdui-textfield-invalid');
+      return true;
+    }
     else {
-      Alert('请输入内容!');
+      $text.parentNode.classList.add('mdui-textfield-invalid');
+      return false;
     }
   }
 }

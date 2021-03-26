@@ -10,15 +10,19 @@ export default {
     this.bindEvent();
   },
   bindEvent () {
+    on('#fileBtn', 'click', () => {
+      document.querySelector('#file').click();
+    })
     on('#file', 'change', this.selectFile.bind(this));
-    clipboard = new ClipboardJS('.btn');
-    clipboard.on('success', () => {
-      document.querySelector('#base64').blur();
-      Alert('已拷贝到剪切板')
+    clipboard = new ClipboardJS('#copyBtn');
+    clipboard.on('success', (e) => {
+      Toast('已拷贝到剪切板');
+      e.clearSelection();
     });
   },
   selectFile (event) {
     const image = event.target.files[0];
+    document.querySelector('#fileName').innerText = image.name;
     const url = window.URL || window.webkitURL
     const img = new Image();
     img.onload = () => {

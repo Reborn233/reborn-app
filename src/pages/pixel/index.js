@@ -5,18 +5,22 @@ export default {
   name: 'pixel',
   template: tpl,
   init () {
+    mdui.mutation();
     this.bindEvent();
   },
   img: null,
   imageName: '',
   bindEvent () {
+    on('#fileBtn', 'click', () => {
+      document.querySelector('#file').click();
+    })
     on('#file', 'change', this.selectFile.bind(this));
     on('#pixelSizeRange', 'change', this.pixelSizeRange.bind(this))
     on('#pixelBtn', 'click', this.toPixel.bind(this));
     on('#saveBtn', 'click', this.save.bind(this));
   },
   selectFile (event) {
-    const image = event.target.files[0];
+    const image = event.target.files[0]; document.querySelector('#fileName').innerText = image.name;
     this.imageName = image.name;
     const img = new Image();
     img.onload = () => {
@@ -28,7 +32,7 @@ export default {
     if (this.img) {
       const size = document.querySelector('#pixelSizeRange').value;
       document.querySelector('#pixelImage').src = this.pixelate(this.img, Number(size));
-      Alert('图片处理成功', 'success');
+      Toast('图片处理成功');
     }
   },
   pixelate (img, size) {

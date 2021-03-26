@@ -1,39 +1,43 @@
 <div class="pixel page">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="#function">功能</a></li>
-      <li class="breadcrumb-item active" aria-current="page">图片像素化</li>
-    </ol>
-  </nav>
-  <div class="row justify-content-start">
-    <div class="col-12 mb-3">
-      <div style="max-width: 500px">
-        <input
-          class="form-control mb-3"
-          type="file"
-          id="file"
-          accept="image/jpeg,image/jpg,image/png,image/svg"
-        />
-        <label for="pixelSize" class="form-label mb-0">像素大小(5-100)：</label>
-        <span id="pixelSize">15</span>
-        <input
-          type="range"
-          class="form-range"
-          max="100"
-          min="5"
-          step="5"
-          value="15"
-          id="pixelSizeRange"
-        />
-        <button id="pixelBtn" type="button" class="btn btn-default me-2">
-          像素化
-        </button>
-        <button id="saveBtn" type="button" class="btn btn-secondary">
-          保存图片
-        </button>
-      </div>
+  <div class="mdui-row" style="max-width: 550px">
+    <div>
+      <button
+        id="fileBtn"
+        class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme"
+      >
+        选择文件
+      </button>
+      <span id="fileName" class="mdui-typo mdui-m-l-1"></span>
+      <input
+        type="file"
+        id="file"
+        class="mdui-hidden"
+        accept="image/jpeg,image/jpg,image/png,image/svg"
+      />
     </div>
-    <div class="col-xs-12 col-md-6">
+    <div class="mdui-m-t-3">
+      <label for="pixelSize" class="form-label mb-0">像素大小(5-100)：</label>
+      <span id="pixelSize">15</span>
+      <label class="mdui-slider">
+        <input
+          id="pixelSizeRange"
+          type="range"
+          step="5"
+          min="5"
+          max="100"
+          value="15"
+        />
+      </label>
+    </div>
+    <div class="mdui-m-t-3">
+      <button
+        id="pixelBtn"
+        class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme"
+      >
+        像素化
+      </button>
+    </div>
+    <div class="mdui-m-t-3">
       <img id="pixelImage" style="width: 100%" />
     </div>
   </div>

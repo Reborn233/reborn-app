@@ -26,7 +26,7 @@ export default {
       {
         name: '减肥热量计算器(傻瓜版)',
         url: '#kcal',
-        icon: require('@/assets/images/pixel.png')
+        icon: require('@/assets/images/calc.png')
       }
     ]
   },

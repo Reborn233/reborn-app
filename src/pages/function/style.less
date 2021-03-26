@@ -1,5 +1,28 @@
 .function {
-  .card-title {
-    margin-bottom: 0;
+  .list {
+    position: relative;
+    .list-item {
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgb(18 18 18 / 10%);
+      @media (max-width: 600px) {
+        text-align: center;
+        > a {
+          .text {
+            margin-top: 8px;
+            font-size: small;
+          }
+        }
+      }
+      > a {
+        display: block;
+        text-decoration: none;
+        img {
+          vertical-align: middle;
+          margin-right: 8px;
+        }
+      }
+    }
   }
 }

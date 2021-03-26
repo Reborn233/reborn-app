@@ -6,176 +6,57 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, viewport-fit=cover"
     />
-    <style>
-      #splashscreen {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background-color: #f0f9fe;
-        transition: all 0.2s;
-        z-index: 8999;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-      #splashscreen > .icon {
-        width: 100%;
-        flex: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      #splashscreen > .button {
-        width: 130px;
-        height: 40px;
-        border: 2px solid #3f3949;
-        padding: 5px 0;
-        border-radius: 8px;
-        color: #3f3949;
-        margin-bottom: 80px;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      #splashscreen > .button::after {
-        content: '';
-        position: absolute;
-        width: 8px;
-        height: 6px;
-        background: #f0f9fe;
-        top: -3px;
-        left: 22px;
-      }
-      #splashscreen > .button::before {
-        content: '';
-        position: absolute;
-        width: 8px;
-        height: 6px;
-        background: #f0f9fe;
-        top: -3px;
-        left: 10px;
-      }
-    </style>
     <link
-      href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/css/all.min.css"
       rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css"
+      integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw"
+      crossorigin="anonymous"
     />
     <title>Reborn</title>
   </head>
-  <body>
-    <div id="splashscreen" class="d-sm-none">
-      <div class="icon">
-        <svg
-          t="1616401319386"
-          class="icon"
-          viewBox="0 0 1024 1024"
-          version="1.1"
-          xmlns="http://www.w3.org/2000/svg"
-          p-id="10477"
-          width="128"
-          height="128"
+  <body
+    class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-indigo mdui-theme-accent-pink mdui-theme-layout-auto mdui-loaded"
+  >
+    <header class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide">
+      <div class="mdui-toolbar mdui-color-theme">
+        <span
+          class="mdui-btn mdui-btn-icon"
+          mdui-drawer="{target: '#left-drawer',swipe:true}"
         >
-          <path
-            d="M768 64h-72l-20 98.4c-1 5 2.8 9.6 7.8 9.6H696v436c0 8.8 7.2 16 16 16h40c8.8 0 16-7.2 16-16V172h12.2c5.1 0 8.8-4.6 7.8-9.6L768 64z"
-            fill="#FFECC5"
-            p-id="10478"
-          ></path>
-          <path
-            d="M748.4 88l12.4 61.1c-9.8 3-16.8 12.2-16.8 22.9v428h-24V172c0-10.8-7.1-19.9-16.8-22.9L715.6 88h32.8M768 64h-72l-20 98.4c-1 5 2.8 9.6 7.8 9.6H696v436c0 8.8 7.2 16 16 16h40c8.8 0 16-7.2 16-16V172h12.2c5.1 0 8.8-4.6 7.8-9.6L768 64z"
-            fill="#3F3949"
-            p-id="10479"
-          ></path>
-          <path
-            d="M715 149.1L727.4 88h-11.8l-12.4 61.1c9.8 3 16.8 12.2 16.8 22.9v428h11.8V172c0-10.8-7-19.9-16.8-22.9z"
-            fill="#FFFFFF"
-            p-id="10480"
-          ></path>
-          <path
-            d="M732 960c-66.3 0-120-53.7-120-120V616c0-8.8 7.2-16 16-16h208c8.8 0 16 7.2 16 16v224c0 66.3-53.7 120-120 120z"
-            fill="#79ABD3"
-            p-id="10481"
-            data-spm-anchor-id="a313x.7781069.0.i11"
-            class="selected"
-          ></path>
-          <path
-            d="M828 624v216c0 52.9-43.1 96-96 96s-96-43.1-96-96V624h192m8-24H628c-8.8 0-16 7.2-16 16v224c0 66.3 53.7 120 120 120s120-53.7 120-120V616c0-8.8-7.2-16-16-16z"
-            fill="#3F3949"
-            p-id="10482"
-          ></path>
-          <path
-            d="M687 840V624h-51v216c0 52.9 43.1 96 96 96 8.8 0 17.4-1.2 25.5-3.4-40.6-11.2-70.5-48.5-70.5-92.6z"
-            fill="#FFFFFF"
-            p-id="10483"
-          ></path>
-          <path
-            d="M520 234c0-72.8-46.2-134.7-111-158v158H295V76c-64.8 23.3-111 85.2-111 158 0 70.7 43.1 131.2 105 156v558h126V390c61.9-24.8 105-85.3 105-156z"
-            fill="#DBDBE1"
-            p-id="10484"
-          ></path>
-          <path
-            d="M415 960H289c-6.6 0-12-5.4-12-12V397.9c-29.7-13.5-55-34.8-73.6-61.9-20.5-30-31.4-65.3-31.4-102 0-37.8 11.6-74 33.4-104.6 21.4-29.9 51-52.3 85.5-64.7 3.7-1.3 7.8-0.8 11 1.5 3.2 2.2 5.1 5.9 5.1 9.8v146h90V76c0-3.9 1.9-7.6 5.1-9.8 3.2-2.2 7.3-2.8 11-1.5 34.5 12.4 64.1 34.8 85.5 64.7C520.4 160 532 196.2 532 234c0 36.7-10.9 72-31.4 102-18.6 27.1-43.9 48.4-73.6 61.9V948c0 6.6-5.4 12-12 12z m-114-24h102V390c0-4.9 3-9.3 7.5-11.1C469.7 355.1 508 298.3 508 234c0-59.7-34.3-113.9-87-139.9V234c0 6.6-5.4 12-12 12H295c-6.6 0-12-5.4-12-12V94.1c-52.7 26-87 80.2-87 139.9 0 64.3 38.3 121.1 97.5 144.9 4.6 1.8 7.5 6.2 7.5 11.1v546z"
-            fill="#3F3949"
-            p-id="10485"
-          ></path>
-          <path
-            d="M344.5 378.9C285.3 355.1 247 298.3 247 234c0-37.1 13.3-72.1 36-99.6V94.1c-52.7 26-87 80.2-87 139.9 0 64.3 38.3 121.1 97.5 144.9 4.6 1.8 7.5 6.2 7.5 11.1v546h51V390c0-4.9-3-9.3-7.5-11.1z"
-            fill="#FFFFFF"
-            p-id="10486"
-          ></path>
-          <path
-            d="M352 883m-24 0a24 24 0 1 0 48 0 24 24 0 1 0-48 0Z"
-            fill="#3F3949"
-            p-id="10487"
-          ></path>
-        </svg>
-      </div>
-      <div class="button">立即进入</div>
-    </div>
-    <nav class="navbar navbar-light bg-white">
-      <div class="container-fluid">
-        <a class="navbar-brand" id="update">
-          <img
-            src="./assets/images/image.png"
-            alt="Reborn的工具库"
-            width="35"
-            height="35"
-          />
+          <i class="mdui-icon material-icons">menu</i>
+        </span>
+        <a href="javascript:;" class="mdui-typo-headline">REBORN </a>
+        <a href="javascript:;" class="mdui-typo-title"></a>
+        <div class="mdui-toolbar-spacer"></div>
+        <a href="javascript:;" id="update" class="mdui-btn mdui-btn-icon">
+          <i class="mdui-icon material-icons">refresh</i>
         </a>
-        <div>
-          <div class="app-nav">
-            <ul id="navbar" class="nav me-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="#home">首页</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#function">功能</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#about">关于</a>
-              </li>
-            </ul>
-          </div>
-          <div class="app-modal-backdrop fade"></div>
-        </div>
-        <div id="burger" class="burger d-block d-sm-none">
-          <div class="line-1"></div>
-          <div class="line-2"></div>
-          <div class="line-3"></div>
-        </div>
       </div>
-    </nav>
+    </header>
+    <div id="left-drawer" class="mdui-drawer">
+      <ul class="mdui-list">
+        <a href="#home" class="mdui-list-item mdui-ripple">
+          <i class="mdui-list-item-icon mdui-icon material-icons">home</i>
+          <div class="mdui-list-item-content">首页</div>
+        </a>
+        <a href="#function" class="mdui-list-item mdui-ripple">
+          <i class="mdui-list-item-icon mdui-icon material-icons">apps</i>
+          <div class="mdui-list-item-content">功能</div>
+        </a>
+        <a href="#about" class="mdui-list-item mdui-ripple">
+          <i class="mdui-list-item-icon mdui-icon material-icons">info</i>
+          <div class="mdui-list-item-content">关于</div>
+        </a>
+      </ul>
+    </div>
     <!--  -->
-    <div id="alert-wrapper" class="container"></div>
-    <main id="container" class="container"></main>
+    <main id="container" class="mdui-container container"></main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- MDUI JavaScript -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"
+      integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

@@ -1,28 +1,24 @@
 <div class="qrcode page">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="#function">功能</a></li>
-      <li class="breadcrumb-item active" aria-current="page">转二维码</li>
-    </ol>
-  </nav>
-  <div class="row justify-content-start">
-    <div class="d-grid gap-2 col-3 mb-3">
-      <button id="toQrcodeBtn" type="button" class="btn btn-default">
-        转换
-      </button>
-    </div>
-    <div class="col-12 mb-5">
+  <div class="mdui-row">
+    <button
+      id="toQrcodeBtn"
+      class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme"
+    >
+      转换
+    </button>
+    <div class="mdui-textfield">
+      <label class="mdui-textfield-label">文本</label>
       <textarea
-        class="form-control qrcode-textarea"
-        placeholder="输入文本"
         id="textarea"
-        rows="1"
+        class="mdui-textfield-input"
+        rows="4"
+        required
+        placeholder="输入文本"
       ></textarea>
+      <div class="mdui-textfield-error">请输入文本</div>
     </div>
-    <div class="col-12">
-      <div id="qrcode" class="d-flex justify-content-center">
-        <div class="qrcode-text">此处生成二维码</div>
-      </div>
+    <div id="qrcode" class="flex-center mdui-m-t-3">
+      <div class="qrcode-text">此处生成二维码</div>
     </div>
   </div>
 </div>

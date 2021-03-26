@@ -18,6 +18,7 @@ export default {
   name: 'kcal',
   template: tpl,
   init () {
+    mdui.mutation();
     on('#kcalBtn', 'click', this.clickBtn.bind(this))
   },
   clickBtn () {
@@ -25,11 +26,8 @@ export default {
     const $check = document.querySelector('#check');
     const kg = $kgInput.value;
     const key = $check.checked ? 'sport' : 'nosport';
-    if (kg) {
+    if (this.valid(kg)) {
       this.calcKcal(kg, formula[key])
-    }
-    else {
-      Alert('请输入体重')
     }
   },
   calcKcal (kg, formula) {
@@ -59,6 +57,15 @@ export default {
     });
 
   },
-  destroy () {
+  valid (value) {
+    const $text = document.querySelector('#kg-input');
+    if (value) {
+      $text.parentNode.classList.remove('mdui-textfield-invalid');
+      return true;
+    }
+    else {
+      $text.parentNode.classList.add('mdui-textfield-invalid');
+      return false;
+    }
   }
 }
