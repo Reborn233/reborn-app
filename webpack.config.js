@@ -49,6 +49,8 @@ module.exports = (options = {}) => ({
       short_name: 'Reborn',
       description: 'Reborn小工具',
       theme_color: '#3f51b5',
+      background_color: '#3f51b5',
+      display: 'fullscreen',
       crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
       icons: [
         {
