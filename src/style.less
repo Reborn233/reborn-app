@@ -23,7 +23,13 @@ img {
   margin-top: 15px;
   padding-bottom: 50px;
 }
-
+#navbar {
+  > a {
+    &.active {
+      color: @default;
+    }
+  }
+}
 .flex-center {
   display: flex;
   justify-content: center;

@@ -154,7 +154,7 @@ const pageManager = {
     const selector = `#navbar a[href="#${page.name}"]`;
     const active = document.querySelector(selector);
     if (active) {
-      document.querySelectorAll('#navbar .nav-link').forEach(element => {
+      document.querySelectorAll('#navbar a').forEach(element => {
         element.classList.remove('active');
       });
       active.classList.add('active')
