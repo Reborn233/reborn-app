@@ -1,8 +1,16 @@
 @import './assets/styles/mixins.less';
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+html {
+  height: 100vh;
+}
+body {
+  height: 100%;
+  width: 100%;
 }
 body {
   background: #f6f6f6;
@@ -36,4 +44,18 @@ img {
 }
 .d-block {
   display: block;
+}
+
+// toolbar
+
+.mdui-toolbar {
+  .iosx-height(56px);
+  .iosx-top();
+}
+.mdui-appbar-with-toolbar {
+  padding-top: calc(56px + env(safe-area-inset-top));
+  padding-top: calc(56px + constant(safe-area-inset-top));
+}
+.mdui-drawer {
+  .iosx-top();
 }

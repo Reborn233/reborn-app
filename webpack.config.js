@@ -30,7 +30,7 @@ module.exports = (options = {}) => ({
         test: /\.(less|css)$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ['css-loader', 'less-loader', 'postcss-loader']
+          use: ['css-loader', 'postcss-loader', 'less-loader']
         })
       },
       {
@@ -113,7 +113,7 @@ module.exports = (options = {}) => ({
     extensions: ['.js', '.json', '.css']
   },
   devServer: {
-    host: '127.0.0.1',
+    host: '0.0.0.0',
     port: 8010,
     proxy: {
     },
