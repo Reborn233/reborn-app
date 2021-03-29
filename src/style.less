@@ -55,6 +55,10 @@ img {
 .mdui-appbar-with-toolbar {
   padding-top: calc(56px + env(safe-area-inset-top));
   padding-top: calc(56px + constant(safe-area-inset-top));
+  @media (min-width: 600px) {
+    padding-top: calc(64px + env(safe-area-inset-top));
+    padding-top: calc(64px + constant(safe-area-inset-top));
+  }
 }
 .mdui-drawer {
   .iosx-top();
