@@ -7,6 +7,7 @@ import Qrcode from './pages/qrcode';
 import ImageToBase64 from './pages/imageToBase64';
 import Pixel from './pages/pixel';
 import Kcal from './pages/kcal';
+import Face from './pages/face';
 
 function setPageManager () {
   const pages = {
@@ -16,7 +17,8 @@ function setPageManager () {
     qrcode: Qrcode,
     imageToBase64: ImageToBase64,
     pixel: Pixel,
-    kcal: Kcal
+    kcal: Kcal,
+    face: Face
   }
   pages.home.url = '#';
 
@@ -36,13 +38,15 @@ function updateApp () {
 
 function _init_ () {
   updateApp();
-  setPageManager();
   window.log = console.log.bind(console);
-  window.pageManager = pageManager;
-  window.Toast = (content = '提示') => mdui.snackbar({
+  window.Toast = (content = '提示', timeout = 4000) => mdui.snackbar({
     message: content,
-    position: 'top'
+    position: 'top',
+    timeout: timeout
   });
+  window.$$ = mdui.$;
+  setPageManager();
+  window.pageManager = pageManager;
   window.home = function () {
     this.location.hash = ''
   }
