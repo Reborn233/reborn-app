@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "clipboard": "^2.0.8",
+    "copy-webpack-plugin": "^8.1.0",
     "qrcodejs2": "^0.0.2"
   },
   "engines": {
