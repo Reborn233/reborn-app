@@ -69,6 +69,7 @@ export default {
     faceBtn.disabled = false;
 
     const canvas = faceapi.createCanvasFromMedia(video);
+    const ctx = canvas.getContext('2d');
     const $face = document.querySelector('.video-box');
     $face.append(canvas);
     const displaySize = { width: video.clientWidth, height: video.clientHeight };
@@ -79,7 +80,7 @@ export default {
         .withFaceLandmarks()
         .withFaceExpressions();
       const resizedDetections = faceapi.resizeResults(detections, displaySize);
-      canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       // faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
       resizedDetections.forEach(res => {
         const { x, y, height } = res.detection.box;
