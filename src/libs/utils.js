@@ -1,4 +1,3 @@
-
 export const template = (tpl, data) => {
   const code = 'var p=[];with(this){p.push(\'' +
     tpl
@@ -11,6 +10,10 @@ export const template = (tpl, data) => {
       .split('\r').join('\\\'')
     + '\');}return p.join(\'\');';
   return new Function(code).apply(data);
+}
+
+export const isPC = () => {
+  return window.screen.width >= 1024;
 }
 
 export const parseElement = (htmlString) => {
