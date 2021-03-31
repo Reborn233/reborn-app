@@ -10,6 +10,24 @@ const ZN = {
   sad: '伤心',
   surprised: '惊讶'
 }
+function getUserMedia (constrains, success, error) {
+  if (navigator.mediaDevices.getUserMedia) {
+    //最新标准API
+    navigator.mediaDevices.getUserMedia(constrains).then(success).catch(error);
+  }
+  else if (navigator.webkitGetUserMedia) {
+    //webkit内核浏览器
+    navigator.webkitGetUserMedia(constrains).then(success).catch(error);
+  }
+  else if (navigator.mozGetUserMedia) {
+    //Firefox浏览器
+    navagator.mozGetUserMedia(constrains).then(success).catch(error);
+  }
+  else if (navigator.getUserMedia) {
+    //旧版API
+    navigator.getUserMedia(constrains).then(success).catch(error);
+  }
+}
 
 export default {
   name: 'face',
@@ -25,24 +43,22 @@ export default {
   run () {
     const _this = this;
     const video = document.querySelector('#video');
-    if (navigator.mediaDevices.getUserMedia) {
-      navigator.mediaDevices.getUserMedia(
-        {
-          video: true
-        },
-        (stream) => {
-          video.srcObject = stream
-        },
-        (err) => {
-          Toast(err.name)
-        }
-      );
-    }
+    getUserMedia(
+      {
+        video: true
+      },
+      (stream) => {
+        video.srcObject = stream
+      },
+      (err) => {
+        Toast(err.name)
+      }
+    );
     video.addEventListener('play', () => {
       const canvas = faceapi.createCanvasFromMedia(video);
       const $face = document.querySelector('.face');
       $face.append(canvas);
-      const displaySize = { width: video.width, height: video.height };
+      const displaySize = { width: video.clientWidth, height: video.clientHeight };
       faceapi.matchDimensions(canvas, displaySize);
       setInterval(async () => {
         const detections = await faceapi
