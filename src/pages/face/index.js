@@ -60,18 +60,14 @@ export default {
     }
   },
   run () {
-    const video = document.querySelector('#video');
-    const faceBtn = document.querySelector('#faceBtn');
-
-    video.onloadedmetadata = () => {
-      faceBtn.disabled = false;
-      video.play();
-    };
-    on('#video', 'play', this.facePlay);
+    on('#video', 'loadedmetadata', this.facePlay);
     on('#faceBtn', 'click', this.openMedia);
     on('#closeBtn', 'click', this.closeMedia)
   },
   facePlay () {
+    const faceBtn = document.querySelector('#faceBtn');
+    faceBtn.disabled = false;
+
     const canvas = faceapi.createCanvasFromMedia(video);
     const $face = document.querySelector('.video-box');
     $face.append(canvas);
@@ -117,6 +113,7 @@ export default {
         video.src = window.URL.createObjectURL(stream);
       }
       mediaStreamTrack = stream;
+      video.play();
     }, (err) => {
       Toast(err.name)
     });
@@ -131,6 +128,7 @@ export default {
     }
     clearInterval(timer);
     timer = null;
+    $$('.face canvas').remove();
   },
   destroy () {
     this.closeMedia();
