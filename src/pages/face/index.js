@@ -25,9 +25,8 @@ export default {
   run () {
     const _this = this;
     const video = document.querySelector('#video');
-    console.log(navigator.getUserMedia)
-    if (navigator.getUserMedia) {
-      navigator.getUserMedia(
+    if (navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.getUserMedia(
         {
           video: true
         },
