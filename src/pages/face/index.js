@@ -114,7 +114,7 @@ export default {
         video.src = window.URL.createObjectURL(stream);
       }
       mediaStreamTrack = stream;
-      video.play();
+      // video.play();
     }, (err) => {
       Toast(err.name)
     });
