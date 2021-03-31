@@ -5,7 +5,7 @@ const url = require('url');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const { GenerateSW } = require('workbox-webpack-plugin');
-const copyWebpackPlugin = require('copy-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const publicPath = './';
 
 module.exports = (options = {}) => ({
@@ -78,12 +78,17 @@ module.exports = (options = {}) => ({
     new ExtractTextPlugin('static/css/styles.css'),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
-      favicon: resolve(__dirname, 'src/favicon.ico')
+      favicon: resolve(__dirname, 'src/favicon.ico'),
+      inject: true,
+      path: './public'
     }),
-    new copyWebpackPlugin([{
-      from: resolve(__dirname, '/public'),
-      to: './dist/public'
-    }])
+    new CopyWebpackPlugin([
+      {
+        from: resolve(__dirname, 'public'),
+        to: 'public',
+        ignore: ['.*']
+      }
+    ])
   ],
   optimization: {
     splitChunks: {
