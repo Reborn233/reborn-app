@@ -1,9 +1,22 @@
 <div class="face page">
-  <video
-    id="video"
-    class="mdui-video-fluid"
-    width="400"
-    height="375"
-    muted
-  ></video>
+  <div class="mdui-row">
+    <button
+      id="faceBtn"
+      class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme"
+    >
+      打开摄像头
+    </button>
+    <button id="closeBtn" class="mdui-btn mdui-btn-raised mdui-ripple">
+      关闭摄像头
+    </button>
+  </div>
+  <div class="mdui-row video-box mdui-m-t-2">
+    <video
+      id="video"
+      class="mdui-video-fluid"
+      width="400"
+      height="375"
+      muted
+    ></video>
+  </div>
 </div>

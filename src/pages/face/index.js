@@ -1,6 +1,6 @@
 import tpl from './view.html';
 import './style.less';
-import { isPC } from '@/libs/utils';
+import { isPC, on, findMaxKeyFromJson } from '@/libs/utils';
 
 const ZN = {
   angry: '生气',
@@ -30,6 +30,7 @@ function getUserMedia (constrains, success, error) {
   }
 }
 
+let timer = null;
 let mediaStreamTrack = null;
 
 export default {
@@ -51,84 +52,76 @@ export default {
     const video = $$('#video');
     if (isPC()) {
       video.attr('width', w - 240);
-      video.attr('height', h - headerH);
+      video.attr('height', h - headerH - 50);
     }
     else {
       video.attr('width', w);
-      video.attr('height', h - headerH);
+      video.attr('height', h - headerH - 50);
     }
   },
   run () {
-    const _this = this;
     const video = document.querySelector('#video');
-    getUserMedia(
-      {
-        video: true
-      },
-      (stream) => {
-        if ('srcObject' in video) {
-          video.srcObject = stream;
-        }
-        else {
-          video.src = window.URL.createObjectURL(stream);
-        }
-        mediaStreamTrack = stream;
-      },
-      (err) => {
-        Toast(err.name)
-      }
-    );
+    const faceBtn = document.querySelector('#faceBtn');
+
     video.onloadedmetadata = () => {
+      faceBtn.disabled = false;
       video.play();
-    }
-    video.addEventListener('play', () => {
-      const canvas = faceapi.createCanvasFromMedia(video);
-      const $face = document.querySelector('.face');
-      $face.append(canvas);
-      const displaySize = { width: video.clientWidth, height: video.clientHeight };
-      faceapi.matchDimensions(canvas, displaySize);
-      setInterval(async () => {
-        const detections = await faceapi
-          .detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
-          .withFaceLandmarks()
-          .withFaceExpressions();
-        const resizedDetections = faceapi.resizeResults(detections, displaySize);
-        canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
-        // faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
-        resizedDetections.forEach(res => {
-          const { x, y, height } = res.detection.box;
-          const exp = _this.max(res.expressions);
-          const text = new faceapi.draw.DrawTextField(
-            ZN[exp.key],
-            {
-              x: x,
-              y: y + height,
-            },
-            {
-              fontColor: '#fff',
-              fontSize: 28
-            }
-          );
-          text.draw(canvas);
-        })
-        faceapi.draw.drawDetections(canvas, resizedDetections);
-        faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
-      }, 100);
+    };
+    on('#video', 'play', this.facePlay);
+    on('#faceBtn', 'click', this.openMedia);
+    on('#closeBtn', 'click', this.closeMedia)
+  },
+  facePlay () {
+    const canvas = faceapi.createCanvasFromMedia(video);
+    const $face = document.querySelector('.video-box');
+    $face.append(canvas);
+    const displaySize = { width: video.clientWidth, height: video.clientHeight };
+    faceapi.matchDimensions(canvas, displaySize);
+    timer = setInterval(async () => {
+      const detections = await faceapi
+        .detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
+        .withFaceLandmarks()
+        .withFaceExpressions();
+      const resizedDetections = faceapi.resizeResults(detections, displaySize);
+      canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+      // faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
+      resizedDetections.forEach(res => {
+        const { x, y, height } = res.detection.box;
+        const exp = findMaxKeyFromJson(res.expressions);
+        const text = new faceapi.draw.DrawTextField(
+          ZN[exp.key],
+          {
+            x: x,
+            y: y + height,
+          },
+          {
+            fontColor: '#fff',
+            fontSize: 28
+          }
+        );
+        text.draw(canvas);
+      })
+      faceapi.draw.drawDetections(canvas, resizedDetections);
+      faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
+    }, 100);
+  },
+  openMedia () {
+    const video = document.querySelector('#video');
+    const faceBtn = document.querySelector('#faceBtn');
+    faceBtn.disabled = true;
+    getUserMedia({ video: true }, (stream) => {
+      if ('srcObject' in video) {
+        video.srcObject = stream;
+      }
+      else {
+        video.src = window.URL.createObjectURL(stream);
+      }
+      mediaStreamTrack = stream;
+    }, (err) => {
+      Toast(err.name)
     });
   },
-  max (data) {
-    let a = 0;
-    let k = null;
-    for (let key in data) {
-      const num = data[key];
-      if (!Number.isNaN(num)) {
-        k = num > a ? key : k;
-        a = num > a ? num : a;
-      }
-    }
-    return k ? { key: k, value: a } : null
-  },
-  destroy () {
+  closeMedia () {
     if (mediaStreamTrack) {
       const tracks = mediaStreamTrack.getTracks();
       tracks.forEach(track => {
@@ -136,5 +129,10 @@ export default {
       });
       mediaStreamTrack = null;
     }
+    clearInterval(timer);
+    timer = null;
+  },
+  destroy () {
+    this.closeMedia();
   }
 }

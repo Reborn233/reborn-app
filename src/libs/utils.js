@@ -12,6 +12,19 @@ export const template = (tpl, data) => {
   return new Function(code).apply(data);
 }
 
+export const findMaxKeyFromJson = (data) => {
+  let a = 0;
+  let k = null;
+  for (let key in data) {
+    const num = data[key];
+    if (!Number.isNaN(num)) {
+      k = num > a ? key : k;
+      a = num > a ? num : a;
+    }
+  }
+  return k ? { key: k, value: a } : null
+}
+
 export const isPC = () => {
   return window.screen.width >= 1024;
 }
