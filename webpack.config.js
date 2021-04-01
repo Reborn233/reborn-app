@@ -46,13 +46,15 @@ module.exports = (options = {}) => ({
   },
   plugins: [
     new WebpackPwaManifest({
-      name: 'My Utils Web App',
+      name: "Reborn's Web App",
       short_name: 'Reborn',
-      description: 'Reborn小工具',
+      description: "Reborn",
+      lang: "zh-CN",
+      start_url: './index.html',
       theme_color: '#3f51b5',
       background_color: '#3f51b5',
-      display: 'fullscreen',
-      crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
+      orientation: 'landscape-primary',
+      display: 'standalone',
       icons: [
         {
           src: resolve(__dirname, 'src/icon.png'),
@@ -67,9 +69,7 @@ module.exports = (options = {}) => ({
         'apple-touch-fullscreen': 'yes',
         'apple-mobile-web-app-capable': 'yes',
         'apple-mobile-web-app-status-bar-style': 'black-translucent'
-      },
-      orientation: 'landscape-primary',
-      inject: true
+      }
     }),
     new GenerateSW({
       clientsClaim: true,
