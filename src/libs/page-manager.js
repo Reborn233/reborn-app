@@ -1,4 +1,5 @@
 import { getUrlParams } from '@/libs/utils';
+import { fineMenusName } from '@/config';
 const pageManager = {
   $container: document.querySelector('#container'),
   _pageStack: [],
@@ -158,6 +159,22 @@ const pageManager = {
         element.classList.remove('active');
       });
       active.classList.add('active')
+    }
+    this.setNavTitle(page);
+  },
+  setNavTitle (page) {
+    const name = page.name;
+    let title = fineMenusName(name);
+    const $title = document.querySelector('#nav-title');
+    $title.innerText = title || 'REBORN';
+    const toolbar = document.querySelector('.mdui-toolbar');
+    if (title) {
+      toolbar.classList.remove('menuIcon');
+      toolbar.classList.add('backIcon');
+    }
+    else {
+      toolbar.classList.remove('backIcon');
+      toolbar.classList.add('menuIcon');
     }
   }
 };

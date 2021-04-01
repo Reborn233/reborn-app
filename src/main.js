@@ -9,6 +9,7 @@ import ImageToBase64 from './pages/imageToBase64';
 import Pixel from './pages/pixel';
 import Kcal from './pages/kcal';
 import Face from './pages/face';
+import Canvas3D from './pages/canvas-3d';
 
 function setPageManager () {
   const pages = {
@@ -19,7 +20,8 @@ function setPageManager () {
     imageToBase64: ImageToBase64,
     pixel: Pixel,
     kcal: Kcal,
-    face: Face
+    face: Face,
+    canvas3D: Canvas3D
   }
   pages.home.url = '#';
 
@@ -37,8 +39,16 @@ function updateApp () {
   });
 }
 
+function back () {
+  const back = document.querySelector('.mdui-toolbar .back');
+  back.addEventListener('click', () => {
+    history.back();
+  })
+}
+
 function _init_ () {
   updateApp();
+  back();
   window.log = console.log.bind(console);
   window.Loading = Loading;
   window.Toast = (content = '提示', timeout = 4000) => mdui.snackbar({
