@@ -1,5 +1,6 @@
 import './style.less';
 import pageManager from './libs/page-manager';
+import Loading from './libs/loading';
 import Home from './pages/home';
 import About from './pages/about';
 import Func from './pages/function';
@@ -39,6 +40,7 @@ function updateApp () {
 function _init_ () {
   updateApp();
   window.log = console.log.bind(console);
+  window.Loading = Loading;
   window.Toast = (content = '提示', timeout = 4000) => mdui.snackbar({
     message: content,
     position: 'top',

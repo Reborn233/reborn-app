@@ -38,12 +38,15 @@ export default {
   template: tpl,
   init () {
     this.initVideo();
+    const loading = Loading();
     Promise.all([
       faceapi.nets.tinyFaceDetector.loadFromUri('./public/models'),
       faceapi.nets.faceLandmark68Net.loadFromUri('./public/models'),
       faceapi.nets.faceRecognitionNet.loadFromUri('./public/models'),
       faceapi.nets.faceExpressionNet.loadFromUri('./public/models'),
-    ]).then(this.run.bind(this))
+    ]).then(this.run.bind(this)).finally(() => {
+      loading.hide();
+    })
   },
   initVideo () {
     const w = document.body.clientWidth;

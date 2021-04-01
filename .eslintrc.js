@@ -21,6 +21,7 @@ module.exports = {
     'no-empty': 0,
     'no-unused-vars': 0,
     'no-undef': 0,
+    'no-func-assign': 0,
     'prefer-destructuring': 0,
     'no-duplicate-imports': 2,
     'brace-style': ['error', 'stroustrup', { allowSingleLine: true }]
