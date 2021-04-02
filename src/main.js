@@ -9,7 +9,8 @@ import ImageToBase64 from './pages/imageToBase64';
 import Pixel from './pages/pixel';
 import Kcal from './pages/kcal';
 import Face from './pages/face';
-import Canvas3D from './pages/canvas-3d';
+import Cube from './pages/canvas-3d/cube';
+import Graphics from './pages/canvas-3d/graphics';
 
 function setPageManager () {
   const pages = {
@@ -21,7 +22,8 @@ function setPageManager () {
     pixel: Pixel,
     kcal: Kcal,
     face: Face,
-    canvas3D: Canvas3D
+    cube: Cube,
+    graphics: Graphics
   }
   pages.home.url = '#';
 
@@ -39,16 +41,9 @@ function updateApp () {
   });
 }
 
-function back () {
-  const back = document.querySelector('.mdui-toolbar .back');
-  back.addEventListener('click', () => {
-    history.back();
-  })
-}
 
 function _init_ () {
   updateApp();
-  back();
   window.log = console.log.bind(console);
   window.Loading = Loading;
   window.Toast = (content = '提示', timeout = 4000) => mdui.snackbar({

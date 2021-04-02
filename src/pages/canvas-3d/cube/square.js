@@ -1,7 +1,7 @@
-import CanvasBase from './base/canvas-base';
+import CanvasBase from '../base/canvas-base';
 export default class Square extends CanvasBase {
-  constructor (...args) {
-    super(args);
+  constructor (id, width, height) {
+    super(id, width, height);
     this.visual = {
       x: 0,
       y: 0,

@@ -2530,6 +2530,11 @@ clone@^2.1.1:
   resolved "https://registry.npm.taobao.org/clone/download/clone-2.1.2.tgz#1b7f4b9f591f1e8f83670401600345a02887435f"
   integrity sha1-G39Ln1kfHo+DZwQBYANFoCiHQ18=
 
+co@3.1.0:
+  version "3.1.0"
+  resolved "https://registry.npm.taobao.org/co/download/co-3.1.0.tgz#4ea54ea5a08938153185e15210c68d9092bc1b78"
+  integrity sha1-TqVOpaCJOBUxheFSEMaNkJK8G3g=
+
 coa@~1.0.1:
   version "1.0.4"
   resolved "https://registry.npm.taobao.org/coa/download/coa-1.0.4.tgz#a9ef153660d6a86a8bdec0289a5c684d217432fd"
@@ -5162,6 +5167,11 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
+marked@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.npm.taobao.org/marked/download/marked-2.0.1.tgz#5e7ed7009bfa5c95182e4eb696f85e948cefcee3"
+  integrity sha1-Xn7XAJv6XJUYLk62lvhelIzvzuM=
+
 math-expression-evaluator@^1.2.14:
   version "1.3.7"
   resolved "https://registry.npm.taobao.org/math-expression-evaluator/download/math-expression-evaluator-1.3.7.tgz?cache=0&sync_timestamp=1608424818299&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fmath-expression-evaluator%2Fdownload%2Fmath-expression-evaluator-1.3.7.tgz#1b62225db86af06f7ea1fd9576a34af605a5b253"
@@ -6981,6 +6991,11 @@ slice-ansi@^4.0.0:
     astral-regex "^2.0.0"
     is-fullwidth-code-point "^3.0.0"
 
+sliced@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npm.taobao.org/sliced/download/sliced-1.0.1.tgz#0b3a662b5d04c3177b1926bea82b03f837a2ef41"
+  integrity sha1-CzpmK10Ewxd7GSa+qCsD+Dei70E=
+
 snapdragon-node@^2.0.1:
   version "2.1.1"
   resolved "https://registry.npm.taobao.org/snapdragon-node/download/snapdragon-node-2.1.1.tgz#6c175f86ff14bdb0724563e8f3c1b021a286853b"
@@ -7805,6 +7820,14 @@ vm-browserify@^1.0.1:
   resolved "https://registry.npm.taobao.org/vm-browserify/download/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha1-eGQcSIuObKkadfUR56OzKobl3aA=
 
+ware-loader@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.npm.taobao.org/ware-loader/download/ware-loader-0.2.4.tgz#a8fec27d3c267e334d54d19287cee8d58235d421"
+  integrity sha1-qP7CfTwmfjNNVNGSh87o1YI11CE=
+  dependencies:
+    loader-utils "^1.1.0"
+    wrapped "^1.0.1"
+
 watchpack-chokidar2@^2.0.1:
   version "2.0.1"
   resolved "https://registry.npm.taobao.org/watchpack-chokidar2/download/watchpack-chokidar2-2.0.1.tgz?cache=0&sync_timestamp=1604989063099&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fwatchpack-chokidar2%2Fdownload%2Fwatchpack-chokidar2-2.0.1.tgz#38500072ee6ece66f3769936950ea1771be1c957"
@@ -8201,6 +8224,14 @@ wrap-ansi@^5.1.0:
     ansi-styles "^3.2.0"
     string-width "^3.0.0"
     strip-ansi "^5.0.0"
+
+wrapped@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npm.taobao.org/wrapped/download/wrapped-1.0.1.tgz#c783d9d807b273e9b01e851680a938c87c907242"
+  integrity sha1-x4PZ2Aeyc+mwHoUWgKk4yHyQckI=
+  dependencies:
+    co "3.1.0"
+    sliced "^1.0.1"
 
 wrappy@1:
   version "1.0.2"

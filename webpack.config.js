@@ -5,7 +5,8 @@ const url = require('url');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const { GenerateSW } = require('workbox-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const marked = require('marked');
 const publicPath = './';
 
 module.exports = (options = {}) => ({
@@ -41,6 +42,16 @@ module.exports = (options = {}) => ({
       {
         test: /\.html$/i,
         loader: 'html-loader',
+      },
+      {
+        test: /\.md$/,
+        loader: 'ware-loader',
+        enforce: 'pre',
+        options: {
+          middleware: function (source) {
+            return `<div>${marked(source)}</div>`
+          }
+        }
       }
     ]
   },

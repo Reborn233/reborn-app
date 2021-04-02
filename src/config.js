@@ -20,9 +20,14 @@ export const menus = [
     icon: require('@/assets/images/calc.png')
   },
   {
-    name: 'canvas3D',
-    url: '#canvas3D',
-    icon: require('@/assets/images/calc.png')
+    name: '画个立方体',
+    url: '#cube',
+    icon: require('@/assets/images/cube.png')
+  },
+  {
+    name: '计算机图形学',
+    url: '#graphics',
+    icon: require('@/assets/images/graphics.png')
   }
 ];
 

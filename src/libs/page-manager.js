@@ -168,14 +168,7 @@ const pageManager = {
     const $title = document.querySelector('#nav-title');
     $title.innerText = title || 'REBORN';
     const toolbar = document.querySelector('.mdui-toolbar');
-    if (title) {
-      toolbar.classList.remove('menuIcon');
-      toolbar.classList.add('backIcon');
-    }
-    else {
-      toolbar.classList.remove('backIcon');
-      toolbar.classList.add('menuIcon');
-    }
+
   }
 };
 
