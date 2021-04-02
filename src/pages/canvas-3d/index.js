@@ -3,7 +3,8 @@ import './style.less';
 
 let canvas, ctx;
 let mousedown = false;
-let rotationAngle = 30;
+let rotationAngleY = 30;
+let rotationAngleX = 0;
 
 export default {
   name: 'canvas3D',
@@ -29,24 +30,21 @@ export default {
     canvas = document.querySelector('#canvas');
     ctx = canvas.getContext('2d');
     this.animationFrame();
-    let ox, oy, mx, my, mx1;
+    let ox, oy, mx, my;
     canvas.addEventListener('mousedown', (e) => {
       mousedown = true;
-      ox = e.offsetX;
-      oy = e.offsetY;
+      ox = e.offsetX / 2;
+      oy = e.offsetY / 2;
     });
     canvas.addEventListener('mousemove', (e) => {
       if (!mousedown) return;
-      mx = ox - e.offsetX;
-      my = oy - e.offsetY;
-      if (mx > mx1) {
-        rotationAngle = - mx / 30;
-      }
-      else {
-        rotationAngle = mx / 30;
-      }
-      mx1 = mx;
+      mx = e.offsetX / 2 - ox;
+      my = e.offsetY / 2 - oy;
+      rotationAngleY = -mx;
+      rotationAngleX = -my;
       this.animationFrame();
+      ox = e.offsetX / 2;
+      oy = e.offsetY / 2;
     });
     canvas.addEventListener('mouseup', (e) => {
       mousedown = false;
@@ -56,9 +54,15 @@ export default {
     for (let key in this.data.pointMap) {
       let point = this.data.pointMap[key]
       let [x, y, z] = point;
-      point[0] = x * Math.cos(rotationAngle / 180 * Math.PI) - z * Math.sin(rotationAngle / 180 * Math.PI)
+      // 绕Y轴旋转
+      point[0] = x * Math.cos(rotationAngleY / 180 * Math.PI) - z * Math.sin(rotationAngleY / 180 * Math.PI)
       point[1] = y;
-      point[2] = z * Math.cos(rotationAngle / 180 * Math.PI) + x * Math.sin(rotationAngle / 180 * Math.PI)
+      point[2] = z * Math.cos(rotationAngleY / 180 * Math.PI) + x * Math.sin(rotationAngleY / 180 * Math.PI)
+      // 绕X轴旋转
+      let [x1, y1, z1] = point;
+      point[0] = x1;
+      point[1] = y1 * Math.cos(rotationAngleX / 180 * Math.PI) - z1 * Math.sin(rotationAngleX / 180 * Math.PI);
+      point[2] = z1 * Math.cos(rotationAngleX / 180 * Math.PI) + y1 * Math.sin(rotationAngleX / 180 * Math.PI)
     }
     this.draw();
   },
