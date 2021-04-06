@@ -11,6 +11,7 @@ import Ray from '../base/Ray';
 import LightSample from '../base/LightSample';
 import DirectionalLight from '../base/DirectionalLight';
 import PointLight from '../base/PointLight';
+import SpotLight from '../base/SpotLight';
 export default class Circle extends CanvasBase {
   constructor (id, width, height) {
     super(id, width, height);
@@ -36,6 +37,14 @@ export default class Circle extends CanvasBase {
     //   ),
     //   3
     // )
+    let lights = [];
+    for (let x = 10; x <= 30; x += 4)
+      for (let z = 20; z <= 40; z += 4)
+        lights.push(new PointLight(Color.white.multiply(80), new Vector3(x, 50, z)));
+    //
+    let fillLight = new DirectionalLight(Color.white.multiply(0.25), new Vector3(1.5, 1, 0.5));
+    fillLight.shadow = false;
+    lights.push(fillLight);
     this.renderLight(
       new Union([
         new Plane(new Vector3(0, 1, 0), 0),
@@ -43,10 +52,7 @@ export default class Circle extends CanvasBase {
         new Plane(new Vector3(1, 0, 0), -20),
         new Sphere(new Vector3(0, 10, -10), 10)
       ]),
-      [
-        new PointLight(Color.white.multiply(2000), new Vector3(30, 40, 30)),
-        new PointLight(Color.white.multiply(2000), new Vector3(10, 60, 40))
-      ],
+      lights,
       new Camera(new Vector3(0, 10, 10), new Vector3(0, 0, -1), new Vector3(0, 1, 0), 90)
     )
   }
