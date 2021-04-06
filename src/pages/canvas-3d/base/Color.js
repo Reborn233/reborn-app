@@ -26,4 +26,6 @@ export default class Color {
   static red = new Color(1, 0, 0);
   static green = new Color(0, 1, 0);
   static blue = new Color(0, 0, 1);
+  static yellow = new Color(205 / 255, 220 / 255, 57 / 255);
+  static orangle = new Color(1, 152 / 255, 0);
 }

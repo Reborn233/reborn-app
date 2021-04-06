@@ -8,7 +8,7 @@ export default {
   name: 'graphics',
   template: tpl,
   init () {
-    circle = new Circle('#canvas');
+    circle = new Circle('#canvas', 600, 600);
   },
   destroy () {
     circle = null;
